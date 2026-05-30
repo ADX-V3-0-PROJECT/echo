@@ -1,3 +1,18 @@
+// Function to generate a pipeline node
+const createPipelineNode = (x, y, z, statusColor) => {
+  const geometry = new THREE.SphereGeometry(2, 16, 16);
+  const material = new THREE.MeshBasicMaterial({ color: statusColor });
+  const sphere = new THREE.Mesh(geometry, material);
+  
+  sphere.position.set(x, y, z);
+  scene.add(sphere);
+  
+  return sphere;
+};
+
+// Example: Create a passing node (Cyan) and a failing node (Amber/Red)
+const buildNode = createPipelineNode(-20, 0, 0, 0x00ffff); 
+const testNode = createPipelineNode(20, 10, -10, 0xff3300); 
 import * as THREE from 'three';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
